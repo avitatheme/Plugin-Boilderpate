@@ -6,10 +6,13 @@
 
 	<arg name="extensions" value="php"/>
 
-	<rule ref="PHPCompatibility"/>
+	<rule ref="PHPCompatibilityWP"/>
 	<config name="testVersion" value="7.0-"/>
 
 	<rule ref="WordPress-Extra">
+		<exclude name="NormalizedArrays.Arrays.ArrayBraceSpacing"/>
+		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment"/>
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found"/>
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
 		<exclude name="WordPress.PHP.YodaConditions.NotYoda" />
@@ -28,7 +31,6 @@
 		<exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
 		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceAfterOpen" />
 		<exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing.SpaceBeforeClose" />
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeOpenBracket" />
@@ -37,18 +39,12 @@
 		<exclude name="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
-		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterOpen" />
 		<exclude name="Squiz.PHP.DisallowMultipleAssignments.Found" />
 		<exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
 		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis" />
 		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword" />
+		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing" />
 		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore" />
-	</rule>
-
-	<rule ref="WordPress.WP.DeprecatedFunctions">
-		<properties>
-			<property name="minimum_supported_version" value="5.0"/>
-		</properties>
 	</rule>
 
 	<rule ref="WordPress.WhiteSpace.ControlStructureSpacing">
@@ -75,7 +71,7 @@
 			<property name="text_domain" type="array">
 				<element value="vnh_textdomain"/>
 			</property>
-			<property name="check_translator_comments" value="false"/>
+<!--			<property name="check_translator_comments" value="false"/>-->
 		</properties>
 	</rule>
 

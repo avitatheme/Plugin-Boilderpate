@@ -12,7 +12,7 @@ function set_cookie($name, $value, $time = DAY_IN_SECONDS, $path = '/') {
 }
 
 function is_plugin_settings_page() {
-	return strpos(get_current_screen()->id, PLUGIN_SLUG) !== false;
+	return str_contains(get_current_screen()->id, PLUGIN_SLUG);
 }
 
 function get_plugin_path($dir = null) {

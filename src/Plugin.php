@@ -34,25 +34,25 @@ const PLUGIN_DIR = __DIR__;
 require_once PLUGIN_DIR . '/vendor/autoload.php';
 
 final class Plugin implements Loadable {
+	public $services;
 	use Constants;
 	use Helpers;
 
 	public function __construct() {
+		$this->services = Container::instance()->services;
 		$this->load();
 		$this->boot();
 	}
 
 	public function load() {
-		$services = Container::instance()->services;
+		$this->services->get(Setting_API::class)->boot();
 
-		$services->get(Setting_API::class)->boot();
-
-		$services->get(Allowed_HTML::class)->boot();
+		$this->services->get(Allowed_HTML::class)->boot();
 
 		if (is_admin()) {
-			$services->get(Plugin_Action_Links::class)->boot();
-			$services->get(Plugin_Row_Meta::class)->boot();
-			$services->get(Settings_Page::class)->boot();
+			$this->services->get(Plugin_Action_Links::class)->boot();
+			$this->services->get(Plugin_Row_Meta::class)->boot();
+			$this->services->get(Settings_Page::class)->boot();
 		}
 	}
 
@@ -66,17 +66,15 @@ final class Plugin implements Loadable {
 	}
 
 	public function init() {
-		$services = Container::instance()->services;
+		$this->services->get(Enqueue_Frontend_Assets::class)->boot();
+		$this->services->get(Enqueue_Backend_Assets::class)->boot();
 
-		$services->get(Enqueue_Frontend_Assets::class)->boot();
-		$services->get(Enqueue_Backend_Assets::class)->boot();
-
-		$services->get(PHP_Checker::class)->init();
-		$services->get(WordPress_Checker::class)->init();
+		$this->services->get(PHP_Checker::class)->init();
+		$this->services->get(WordPress_Checker::class)->init();
 		if (defined('WC_VERSION')) {
-			$services->get(WooCommerce_Checker::class)->init();
+			$this->services->get(WooCommerce_Checker::class)->init();
 		} else {
-			$services->get(WooCommerce_Required::class)->init();
+			$this->services->get(WooCommerce_Required::class)->init();
 		}
 	}
 }

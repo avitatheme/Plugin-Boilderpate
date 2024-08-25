@@ -6,7 +6,7 @@
         }
     },
     "require": {
-        "php-di/php-di": "^6.4.0",
+        "php-di/php-di": "^7.0.7",
         "freemius/wordpress-sdk": "^2.4.3",
         "vunamhung/wptoolkit": "dev-master",
         "ext-json": "*"

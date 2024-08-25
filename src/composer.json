@@ -10,10 +10,11 @@
         }
     },
     "require": {
+        "ext-json": "*",
+        "freemius/wordpress-sdk": "^2.7.4",
+        "mpetrovich/dash": "^v4.0.1",
         "php-di/php-di": "^7.0.7",
-        "freemius/wordpress-sdk": "^2.4.3",
-        "vunamhung/wptoolkit": "dev-master",
-        "ext-json": "*"
+        "vunamhung/wptoolkit": "dev-master"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

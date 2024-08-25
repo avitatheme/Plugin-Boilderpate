@@ -30,6 +30,3 @@ function get_plugin_url($dir = null) {
 
 	return plugin_dir_url(PLUGIN_FILE) . $dir;
 }
-
-trait Helpers {
-}

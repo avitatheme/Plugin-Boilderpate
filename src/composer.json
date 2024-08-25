@@ -1,6 +1,10 @@
 {
     "autoload": {
-        "files": ["freemius/start.php"],
+        "files": [
+            "freemius/start.php",
+            "constants.php",
+            "helpers.php"
+        ],
         "psr-4": {
             "vnh_namespace\\": "."
         }

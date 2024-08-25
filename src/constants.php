@@ -19,6 +19,3 @@ const PLUGIN_TEXT_DOMAIN = PLUGIN_DATA['TextDomain'];
 const DS = '/';
 const MIN_PHP_VERSION = 7.0;
 const MIN_WP_VERSION = 5.0;
-
-trait Constants {
-}

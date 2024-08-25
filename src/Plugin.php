@@ -35,8 +35,6 @@ require_once PLUGIN_DIR . '/vendor/autoload.php';
 
 final class Plugin implements Loadable {
 	public $services;
-	use Constants;
-	use Helpers;
 
 	public function __construct() {
 		$this->services = Container::instance()->services;

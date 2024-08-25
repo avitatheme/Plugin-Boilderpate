@@ -45,8 +45,6 @@ final class Plugin implements Loadable {
 	}
 
 	public function load() {
-		$this->services->get(Setting_API::class)->boot();
-
 		$this->services->get(Allowed_HTML::class)->boot();
 
 		if (is_admin()) {
@@ -57,8 +55,13 @@ final class Plugin implements Loadable {
 	}
 
 	public function boot() {
+		add_action('rest_api_init', [$this, 'register_routes']);
 		add_action('plugin_loaded', [$this, 'plugin_loaded']);
 		add_action('init', [$this, 'init']);
+	}
+
+	public function register_routes() {
+		$this->services->get(Setting_API::class)->register_routes();
 	}
 
 	public function plugin_loaded() {

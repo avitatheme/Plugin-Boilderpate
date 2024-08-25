@@ -2,6 +2,7 @@
 
 namespace vnh_namespace\api;
 
+use vnh_namespace\Settings;
 use WP_REST_Server;
 use const vnh_namespace\DS;
 use const vnh_namespace\PLUGIN_SLUG;
@@ -32,19 +33,13 @@ class Setting_API extends \WP_REST_Controller {
 	}
 
 	public function get_items($request) {
-		$saved = get_option(PLUGIN_SLUG, []);
-
-		return wp_parse_args($saved, self::$defaults);
+		return Settings::get_settings();
 	}
 
 	public function create_item($request) {
 		$settings = $request->get_body();
 		$settings = json_decode($settings, true);
 
-		return rest_ensure_response(update_option(PLUGIN_SLUG, $settings))->set_status(201);
-	}
-
-	public function get_item_schema() {
-		return [];
+		return rest_ensure_response(Settings::save_settings(settings))->set_status(201);
 	}
 }

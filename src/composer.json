@@ -13,7 +13,8 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
-        "mnsami/composer-custom-directory-installer": "^2.0.0"
+        "mnsami/composer-custom-directory-installer": "^2.0.0",
+        "kint-php/kint": "^5.1.1"
     },
     "extra": {
         "installer-paths": {

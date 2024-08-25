@@ -13,8 +13,4 @@ class Settings {
 
 		return wp_parse_args($saved, self::$defaults);
 	}
-
-	public static function save_settings(array $settings) {
-		update_option(self::$option_key, $settings);
-	}
 }

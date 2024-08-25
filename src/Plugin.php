@@ -26,6 +26,7 @@ use vnh_namespace\tools\PHP_Checker;
 use vnh_namespace\tools\WooCommerce_Checker;
 use vnh_namespace\tools\WooCommerce_Required;
 use vnh_namespace\tools\WordPress_Checker;
+use function Dash\pluck;
 use function vnh\plugin_languages_path;
 
 const PLUGIN_FILE = __FILE__;

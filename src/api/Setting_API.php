@@ -27,6 +27,7 @@ class Setting_API extends \WP_REST_Controller {
 				[
 					'methods' => WP_REST_Server::CREATABLE,
 					'callback' => [$this, 'create_item'],
+					'permission_callback' => [$this, 'create_item_permissions_check'],
 				],
 			]
 		);
@@ -40,6 +41,12 @@ class Setting_API extends \WP_REST_Controller {
 		$settings = $request->get_body();
 		$settings = json_decode($settings, true);
 
-		return rest_ensure_response(Settings::save_settings(settings))->set_status(201);
+		update_option(PLUGIN_SLUG, $settings);
+
+		return new \WP_REST_Response(['success' => true], 201);
+	}
+
+	public function create_item_permissions_check($request) {
+		return current_user_can('edit_posts');
 	}
 }

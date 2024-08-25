@@ -53,12 +53,12 @@ final class Plugin implements Loadable {
 	}
 
 	public function boot() {
-		add_action('rest_api_init', [$this, 'register_routes']);
+		add_action('rest_api_init', [$this, 'register_api_routes']);
 		add_action('plugin_loaded', [$this, 'plugin_loaded']);
 		add_action('init', [$this, 'init']);
 	}
 
-	public function register_routes() {
+	public function register_api_routes() {
 		$this->services->get(Setting_API::class)->register_routes();
 	}
 
